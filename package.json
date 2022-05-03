@@ -1,6 +1,12 @@
 {
   "name": "qat",
   "displayName": "Qat Programming Language",
+  "publisher": "aldrinsartfactory",
+  "author": {
+    "name": "Aldrin Mathew",
+    "email": "admin@aldrinmathew.com",
+    "url": "https://github.com/AldrinMathew"
+  },
   "description": "Official analysis, highlighting, formatting and syntax support for the Qat programming language...",
   "dependencies": {
     "@vscode/test-electron": "^2.1.3"
