@@ -1,0 +1,346 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "qat",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#semantics"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#constantsAndSpecialValues"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.qat",
+          "match": "\\b(if|else|loop|while|times|give|type|model|from|to|end|part|say|var|lib|bring|of|in|copy|move|alias|expose|space|operator)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator",
+          "match": "(([+\\-\\*\\/%^~!])|(<{1,2}|[>]{1,3})|([|&]{1,2}))(=)?"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.comma.qat",
+          "match": ","
+        },
+        {
+          "name": "punctuation.terminator.qat",
+          "match": "."
+        },
+        {
+          "name": "punctuation.dot.qat",
+          "match": "'"
+        },
+        {
+          "name": "punctuation.dot.qat",
+          "match": "\\:"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.interpolated.double.qat",
+          "begin": "(?<!\\|r)\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "invalid.string.newline",
+              "match": "\\n"
+            },
+            {
+              "include": "#stringInterpolation"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.qat",
+          "begin": "r\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "invalid.string.newline",
+              "match": "\\n"
+            }
+          ]
+        }
+      ]
+    },
+    "qatDocumentation": {
+      "patterns": [
+        {
+          "match": "(\\[.*?\\])",
+          "captures": {
+            "0": {
+              "name": "variable.name.source.qat"
+            }
+          }
+        },
+        {
+          "match": "^ {4,}(?![ \\*]).*",
+          "captures": {
+            "0": {
+              "name": "variable.name.source.qat"
+            }
+          }
+        },
+        {
+          "contentName": "variable.other.source.qat",
+          "begin": "```.*?$",
+          "end": "```"
+        },
+        {
+          "match": "(`.*?`)",
+          "captures": {
+            "0": {
+              "name": "variable.other.source.qat"
+            }
+          }
+        },
+        {
+          "match": "(`.*?`)",
+          "captures": {
+            "0": {
+              "name": "variable.other.source.qat"
+            }
+          }
+        },
+        {
+          "match": "(\\* ((    ).*))$",
+          "captures": {
+            "2": {
+              "name": "variable.other.source.qat"
+            }
+          }
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.empty.qat",
+          "match": "/\\*\\*/",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.qat"
+            }
+          }
+        },
+        {
+          "include": "#commentsStarDocumentation"
+        },
+        {
+          "include": "#commentsSlashDocumentation"
+        },
+        {
+          "include": "#commentsInline"
+        }
+      ]
+    },
+    "commentsStarDocumentation": {
+      "patterns": [
+        {
+          "name": "comment.block.documentation.qat",
+          "begin": "/\\*\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "include": "#commentsStarDocumentation"
+            },
+            {
+              "include": "#commentsBlock"
+            },
+            {
+              "include": "#qatDocumentation"
+            }
+          ]
+        }
+      ]
+    },
+    "commentsSlashDocumentation": {
+      "patterns": [
+        {
+          "name": "comment.block.documentation.qat",
+          "begin": "///",
+          "while": "^\\s*///",
+          "patterns": [
+            {
+              "include": "#qatDocumentation"
+            }
+          ]
+        }
+      ]
+    },
+    "commentsInline": {
+      "patterns": [
+        {
+          "include": "#commentsBlock"
+        },
+        {
+          "match": "((//).*)$",
+          "captures": {
+            "1": {
+              "name": "comment.line.double-slash.qat"
+            }
+          }
+        }
+      ]
+    },
+    "commentsBlock": {
+      "patterns": [
+        {
+          "name": "comment.block.qat",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "include": "#commentsBlock"
+            }
+          ]
+        }
+      ]
+    },
+    "constantsAndSpecialValues": {
+      "patterns": [
+        {
+          "name": "constant.language.qat",
+          "match": "(?<!\\$)\\b(true|false|null)\\b(?!\\$)"
+        },
+        {
+          "name": "variable.language.qat",
+          "match": "(?<!\\$)\\b(this|super)\\b(?!\\$)"
+        },
+        {
+          "name": "constant.numeric.qat",
+          "match": "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)"
+        },
+        {
+          "include": "#typeIdentifier"
+        },
+        {
+          "include": "#functionIdentifier"
+        }
+      ]
+    },
+    "stringInterpolation": {
+      "patterns": [
+        {
+          "match": "\\;([a-zA-Z_]?[a-zA-Z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.qat"
+            }
+          }
+        },
+        {
+          "name": "string.interpolated.expression.qat",
+          "begin": "\\{\\{",
+          "end": "\\}\\}",
+          "patterns": [
+            {
+              "include": "#constantsAndSpecialValues",
+              "name": "variable.parameter.qat"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "name": "variable.parameter.qat",
+              "match": "[a-zA-Z0-9_]+"
+            }
+          ]
+        },
+        {
+          "name": "constant.character.escape.qat",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "typeIdentifier": {
+      "patterns": [
+        {
+          "match": "(?<![a-zA-Z0-9_$])([_$]*[A-Z][a-zA-Z0-9_$]*(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?|(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|(void)\\b))",
+          "captures": {
+            "1": {
+              "name": "support.class.qat"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#typeParameters"
+                }
+              ]
+            },
+            "3": {
+              "name": "storage.type.primitive.qat"
+            }
+          }
+        }
+      ]
+    },
+    "functionIdentifier": {
+      "patterns": [
+        {
+          "match": "::([ ]?)([_$]*[a-z][a-zA-Z0-9_$]*)(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?[!?]?(\\(|\\s+=>)",
+          "captures": {
+            "2": {
+              "name": "entity.name.function.qat"
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#typeParameters"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "typeParameters": {
+      "begin": "(<)",
+      "end": "(>)",
+      "beginCaptures": {
+        "1": {
+          "name": "other.source.qat"
+        }
+      },
+      "endCaptures": {
+        "1": {
+          "name": "other.source.qat"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#typeIdentifier"
+        },
+        {
+          "match": "[\\s,]+"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.qat"
+}
+
