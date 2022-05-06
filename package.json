@@ -1,5 +1,6 @@
 {
   "name": "qat",
+  "version": "0.1.1",
   "displayName": "Qat Programming Language",
   "publisher": "aldrinsartfactory",
   "repository": {
@@ -19,7 +20,6 @@
   "devDependencies": {
     "@types/vscode": "^1.66.0"
   },
-  "version": "0.1.0",
   "engines": {
     "vscode": "^1.66.0"
   },
