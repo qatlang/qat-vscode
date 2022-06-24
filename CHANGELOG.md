@@ -7,3 +7,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Initial release
+
+## [0.1.1]
+
+- Highlighting for an older version of the syntax
+
+## [0.2.0]
+
+- The syntax highlighting has been updated to the latest version of the syntax of the language

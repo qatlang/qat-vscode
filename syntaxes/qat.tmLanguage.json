@@ -9,9 +9,6 @@
       "include": "#keywords"
     },
     {
-      "include": "#operators"
-    },
-    {
       "include": "#strings"
     },
     {
@@ -19,6 +16,9 @@
     },
     {
       "include": "#constantsAndSpecialValues"
+    },
+    {
+      "include": "#operators"
     }
   ],
   "repository": {
@@ -26,7 +26,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|times|give|type|model|from|to|end|part|say|var|lib|bring|of|in|copy|move|alias|expose|space|operator)\\b"
+          "match": "\\b(if|else|loop|while|times|over|let|multithread|collect|give|from|end|part|say|var|lib|bring|of|in|copy|move|alias|expose|box|operator)\\b"
         }
       ]
     },
@@ -221,6 +221,17 @@
         }
       ]
     },
+    "semantics": {
+      "patterns": [
+        { "include": "#visibilityValue" },
+        { "include": "#functionDeclaration" },
+        { "include": "#typeDeclaration" },
+        { "include": "#primitiveTypes" },
+        { "include": "#toConversion" },
+        { "include": "#declaration" },
+        { "include": "#memberEntity" }
+      ]
+    },
     "constantsAndSpecialValues": {
       "patterns": [
         {
@@ -229,90 +240,87 @@
         },
         {
           "name": "variable.language.qat",
-          "match": "(?<!\\$)\\b(this|super)\\b(?!\\$)"
+          "match": "(?<!\\$)\\b('')\\b(?!\\$)"
         },
         {
           "name": "constant.numeric.qat",
           "match": "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)"
-        },
-        {
-          "include": "#typeIdentifier"
-        },
-        {
-          "include": "#functionIdentifier"
         }
       ]
     },
-    "stringInterpolation": {
+    "primitiveTypes": {
       "patterns": [
         {
-          "match": "\\;([a-zA-Z_]?[a-zA-Z0-9_]*)",
-          "captures": {
-            "1": {
-              "name": "variable.parameter.qat"
-            }
-          }
-        },
-        {
-          "name": "string.interpolated.expression.qat",
-          "begin": "\\{\\{",
-          "end": "\\}\\}",
-          "patterns": [
-            {
-              "include": "#constantsAndSpecialValues",
-              "name": "variable.parameter.qat"
-            },
-            {
-              "include": "#strings"
-            },
-            {
-              "name": "variable.parameter.qat",
-              "match": "[a-zA-Z0-9_]+"
-            }
-          ]
-        },
-        {
-          "name": "constant.character.escape.qat",
-          "match": "\\\\."
+          "match": "(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|void\\b)",
+          "captures": { "1": { "name": "storage.type.primitive.qat" } }
         }
       ]
     },
     "typeIdentifier": {
       "patterns": [
         {
-          "match": "(?<![a-zA-Z0-9_$])([_$]*[A-Z][a-zA-Z0-9_$]*(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?|(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|(void)\\b))",
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?\\b",
           "captures": {
             "1": {
-              "name": "support.class.qat"
-            },
-            "2": {
-              "patterns": [
-                {
-                  "include": "#typeParameters"
-                }
-              ]
-            },
-            "3": {
-              "name": "storage.type.primitive.qat"
+              "name": "entity.name.type.qat"
             }
           }
         }
       ]
     },
-    "functionIdentifier": {
+    "visibilityValue": {
       "patterns": [
         {
-          "match": "::([ ]?)([_$]*[a-z][a-zA-Z0-9_$]*)(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?[!?]?(\\(|\\s+=>)",
+          "match": "(pub)(\\'(box|file|folder|type))?\\b",
+          "captures": {
+            "1": { "name": "keyword.control.less.qat" },
+            "2": { "name": "keyword.control.less.qat" }
+          }
+        }
+      ]
+    },
+    "functionDeclaration": {
+      "patterns": [
+        {
+          "match": "(<~)?[ ]*([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)([ ]*[,]?)*[ ]*)*)(>))?[ ]*->[ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?\\b)[ ]*",
           "captures": {
             "2": {
               "name": "entity.name.function.qat"
             },
+            "5": {
+              "name": "entity.name.type.qat"
+            },
+            "10": {
+              "name": "entity.name.type.qat"
+            }
+          }
+        }
+      ]
+    },
+    "typeDeclaration": {
+      "patterns": [
+        {
+          "match": "(type)[ ]+([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?[ ]*",
+          "patterns": [{ "include": "#typeIdentifier" }],
+          "captures": {
+            "1": { "name": "keyword.control.qat" },
+            "2": {
+              "name": "entity.name.type.qat"
+            },
+            "5": {
+              "name": "entity.name.type.qat"
+            }
+          }
+        }
+      ]
+    },
+    "declaration": {
+      "patterns": [
+        {
+          "match": "((var)[ ]+)?([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?[ ]* [a-zA-Z_][a-zA-Z0-9_]*",
+          "captures": {
             "3": {
-              "patterns": [
-                {
-                  "include": "#typeParameters"
-                }
-              ]
+              "name": "entity.name.type.qat"
             }
           }
         }
@@ -333,10 +341,31 @@
       },
       "patterns": [
         {
-          "include": "#typeIdentifier"
+          "include": "#typeIdentifier",
+          "captures": {
+            "1": { "name": "storage.type.primitive.qat" }
+          }
         },
+        { "match": "[\\s,]+" }
+      ]
+    },
+    "memberEntity": {
+      "patterns": [
         {
-          "match": "[\\s,]+"
+          "match": "''([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": { "1": { "name": "entity.name.tag.type" } }
+        }
+      ]
+    },
+    "toConversion": {
+      "patterns": [
+        {
+          "match": "(to)[ ]+([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?[ ]*",
+          "captures": {
+            "1": { "name": "keyword.control.qat" },
+            "2": { "name": "entity.name.type.qat" },
+            "5": { "name": "entity.name.type.qat" }
+          }
         }
       ]
     }
