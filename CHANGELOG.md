@@ -15,3 +15,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.2.0]
 
 - The syntax highlighting has been updated to the latest version of the syntax of the language
+
+## [0.2.1]
+
+- Added highlighting support for custom integer literals
+- Added string slices as a primitive datatype in highlighting
+
+## [0.2.2]
+
+- Removed times keyword and added more keywords
+- Added highlighting for member functions and function calls

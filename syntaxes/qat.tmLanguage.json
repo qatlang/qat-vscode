@@ -26,7 +26,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|times|over|let|multithread|collect|give|from|variadic|end|part|say|var|lib|bring|of|in|copy|move|alias|expose|box|operator)\\b"
+          "match": "\\b(if|else|loop|while|break|switch|case|continue|over|let|multithread|collect|give|from|variadic|end|part|say|var|lib|bring|of|in|copy|move|alias|expose|box|operator)\\b"
         }
       ]
     },
@@ -259,7 +259,7 @@
     "primitiveTypes": {
       "patterns": [
         {
-          "match": "(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|void\\b|str\\b)",
+          "match": "(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|void\\b|str\\b|cstring\\b|@)",
           "captures": { "1": { "name": "storage.type.primitive.qat" } }
         }
       ]
@@ -300,6 +300,22 @@
             },
             "10": {
               "name": "entity.name.type.qat"
+            }
+          }
+        },
+        {
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.qat"
+            }
+          }
+        },
+        {
+          "match": "''([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.qat"
             }
           }
         }
