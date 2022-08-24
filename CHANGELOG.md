@@ -25,3 +25,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Removed times keyword and added more keywords
 - Added highlighting for member functions and function calls
+
+## [0.2.3]
+
+- Updated highlighting for numeric constants

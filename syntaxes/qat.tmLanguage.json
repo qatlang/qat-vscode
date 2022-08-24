@@ -236,19 +236,19 @@
       "patterns": [
         {
           "name": "constant.language.qat",
-          "match": "(?<!\\$)\\b(true|false|null)\\b(?!\\$)"
+          "match": "\\b(true|false|null)\\b"
         },
         {
           "name": "variable.language.qat",
-          "match": "(?<!\\$)\\b('')\\b(?!\\$)"
+          "match": "\\b('')\\b"
         },
         {
           "name": "constant.numeric.qat",
-          "match": "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)"
+          "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
         },
         {
           "name": "constant.numeric.qat",
-          "match": "([0-9]+)(_([u|i][0-9]+))?",
+          "match": "\\b([0-9]+)(_([u|i][0-9]*))?\\b",
           "captures": {
             "1": { "name": "constant.number.qat" },
             "3": { "name": "storage.type.primitive.qat" }
