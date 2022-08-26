@@ -229,7 +229,8 @@
         { "include": "#primitiveTypes" },
         { "include": "#toConversion" },
         { "include": "#declaration" },
-        { "include": "#memberEntity" }
+        { "include": "#memberEntity" },
+        { "include": "#plainInitialiser" }
       ]
     },
     "constantsAndSpecialValues": {
@@ -351,7 +352,7 @@
       ]
     },
     "typeParameters": {
-      "begin": "(<)",
+      "begin": "(:<)",
       "end": "(>)",
       "beginCaptures": {
         "1": {
@@ -378,6 +379,18 @@
         {
           "match": "''([a-zA-Z_][a-zA-Z0-9_]*)",
           "captures": { "1": { "name": "entity.name.tag.type" } }
+        },
+        {
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)[ ]*:=",
+          "captures": { "1": { "name": "entity.name.tag.type" } }
+        }
+      ]
+    },
+    "plainInitialiser": {
+      "patterns": [
+        {
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)[ ]*{",
+          "captures": { "1": { "name": "entity.name.type.qat" } }
         }
       ]
     },

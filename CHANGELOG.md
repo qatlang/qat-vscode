@@ -29,3 +29,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.2.3]
 
 - Updated highlighting for numeric constants
+
+## [0.2.4]
+
+- Added highlighting for plain initialiser
