@@ -1,0 +1,15 @@
+{
+  // Try to keep synced with Flutter extension!
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "out/src",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules", "out"]
+}
+
