@@ -19,11 +19,17 @@ module.exports = (env) => {
             vscode: "commonjs vscode",
         },
         module: {
-            rules: [{
-                exclude: /node_modules/,
-                test: /\.ts$/,
-                loader: "ts-loader",
-            }],
+            rules: [
+                {
+                    exclude: /node_modules/,
+                    test: /\.ts$/,
+                    loader: "ts-loader",
+                },
+                {
+                    test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
+                    loader: "file"
+                }
+            ],
         },
         output: {
             devtoolModuleFilenameTemplate: "../../[resource-path]",

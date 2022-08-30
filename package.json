@@ -1,6 +1,6 @@
 {
   "name": "qat",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "displayName": "Qat Programming Language",
   "publisher": "aldrinsartfactory",
   "repository": {
@@ -14,6 +14,7 @@
     "url": "https://github.com/AldrinMathew"
   },
   "description": "Official analysis, highlighting, formatting and syntax support for the Qat programming language...",
+  "icon": "media/qat_icon.png",
   "dependencies": {
     "@vscode/test-electron": "^2.1.3",
     "strip-ansi": "^7.0.1",
