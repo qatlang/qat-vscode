@@ -33,3 +33,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.2.4]
 
 - Added highlighting for plain initialiser
+
+## [0.3.1]
+
+- Added error and warning analysis support
+- The analysis is independant of the version of the compiler
+- Updated highlighting rules for the language
+
+## [0.3.2]
+
+- Fixed issue that only errors from IR emission phase were shown in the current file. Now parser and lexer errors and warnings are shown too
+- Updated highlighting rules for the language
+

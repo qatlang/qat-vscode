@@ -6,8 +6,8 @@ import { execute, handleFileDiagnostics } from "./utils"
 
 let qatConfig: QatConfig | undefined
 let diagnosticCollection: vs.DiagnosticCollection;
-let errorLeading = /[ ]+(parser )?(error)[ ]+▌[ ]*/
-let warningLeading = /[ ]+(warning)[ ]+▌[ ]*/
+let errorLeading = /[ ]+(error)[ ]+▌[ ]/
+let warningLeading = /[ ]+(warning)[ ]+▌[ ]/
 let outputDirName = "build"
 
 export async function activate(ctx: vs.ExtensionContext, isRestart: boolean = false) {

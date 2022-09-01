@@ -1,7 +1,13 @@
 # qat
 
-This extensions adds syntax highlighting support for the Qat programming language
+Basic analysis for the language is supported. It now displays errors and warnings. Only 1 error per file is supported, since analysis stops at the first encounter of an error. Multiple warnings will be displayed across various files if there are warnings.
 
-- Currently, basic highlighting support has been added. This is bound to change as the language changes
-- Analysis and formatting is work in progress
-- **_Not ready for production_**
+The extension does not have to updated to get new error messages and warnings added to the compiler. The extension is not dependant on a specific version of the compiler. You can update the compiler to get the latest iteration of analysis support.
+
+Here is a list of features supported:
+
+- Syntax Highlighting
+- Error and warning analysis
+
+**_Not ready for production_**
+

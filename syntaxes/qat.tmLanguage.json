@@ -260,7 +260,7 @@
     "primitiveTypes": {
       "patterns": [
         {
-          "match": "(bool\\b|((i|u){1}[1-9][0-9]*)\\b|f32\\b|f64\\b|f80\\b|f128\\b|f128ppc\\b|fbrain\\b|fhalf\\b|void\\b|str\\b|cstring\\b|@)",
+          "match": "\\b(((i|u){1}[1-9][0-9]*)|f32|f64|f80|f128|f128ppc|fbrain|fhalf|void|str|cstring|@)\\b",
           "captures": { "1": { "name": "storage.type.primitive.qat" } }
         }
       ]
@@ -280,7 +280,7 @@
     "visibilityValue": {
       "patterns": [
         {
-          "match": "(pub)(\\'(box|file|folder|type))?\\b",
+          "match": "(pub)(\\'(box|file|folder|type|lib))?\\b",
           "captures": {
             "1": { "name": "keyword.control.less.qat" },
             "2": { "name": "keyword.control.less.qat" }
