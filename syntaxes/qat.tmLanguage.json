@@ -305,26 +305,35 @@
           }
         },
         {
-          "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)([ ]*[,]?)*[ ]*)*)(>))?\\(",
           "captures": {
             "1": {
               "name": "entity.name.function.qat"
+            },
+            "4": {
+              "name": "entity.name.type.qat"
             }
           }
         },
         {
-          "match": "''([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+          "match": "''([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)([ ]*[,]?)*[ ]*)*)(>))?\\(",
           "captures": {
             "1": {
               "name": "entity.name.function.qat"
+            },
+            "4": {
+              "name": "entity.name.type.qat"
             }
           }
         },
         {
-          "match": "'([a-zA-Z_][a-zA-Z0-9_]*)\\(",
+          "match": "'([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)([ ]*[,]?)*[ ]*)*)(>))?\\(",
           "captures": {
             "1": {
               "name": "entity.name.function.qat"
+            },
+            "4": {
+              "name": "entity.name.type.qat"
             }
           }
         }
@@ -341,6 +350,17 @@
               "name": "entity.name.type.qat"
             },
             "5": {
+              "name": "entity.name.type.qat"
+            }
+          }
+        },
+        {
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*)[ ]*((:<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)([ ]*[,]?)*[ ]*)*)(>))?\\{",
+          "captures": {
+            "1": {
+              "name": "entity.name.type.qat"
+            },
+            "4": {
               "name": "entity.name.type.qat"
             }
           }

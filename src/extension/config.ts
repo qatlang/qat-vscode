@@ -1,8 +1,6 @@
 import * as vs from "vscode"
 import * as which from "which"
 import path from 'path';
-import { execSync } from 'child_process'
-import stripAnsi from 'strip-ansi'
 import * as utils from "./utils"
 
 export class QatConfig {
