@@ -45,3 +45,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Fixed issue that only errors from IR emission phase were shown in the current file. Now parser and lexer errors and warnings are shown too
 - Updated highlighting rules for the language
 
+## [0.3.7]
+
+- Updated highlighting for pattern matching syntax
+- Added match keyword
+

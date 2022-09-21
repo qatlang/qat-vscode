@@ -27,7 +27,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|break|heap|switch|case|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|alias|expose|box|operator)\\b"
+          "match": "\\b(if|else|loop|while|break|heap|switch|case|match[ ]+type|match|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|alias|expose|box|operator)\\b"
         }
       ]
     },
@@ -436,6 +436,20 @@
             },
             "3": {
               "name": "entity.name.type.qat"
+            }
+          }
+        },
+        {
+          "match": "(::)([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(\\(((var[ ]*)?([a-zA-Z_][a-zA-Z0-9_]*))\\))?",
+          "captures": {
+            "2": {
+              "name": "entity.name.type.qat"
+            },
+            "5": {
+              "name": "keyword.control.less.qat"
+            },
+            "6": {
+              "name": "entity.name.tag.type"
             }
           }
         }
