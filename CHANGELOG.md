@@ -50,3 +50,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Updated highlighting for pattern matching syntax
 - Added match keyword
 
+## [0.3.8]
+
+- Updated highlighting for mix types due to change in keyword
+- Changed union keyword to mix for clarity and simplicity
+- Fixed highlighting in match sentences and mix type contents
+

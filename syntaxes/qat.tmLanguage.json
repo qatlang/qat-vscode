@@ -27,7 +27,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|break|heap|switch|case|match[ ]+type|match|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|alias|expose|box|operator)\\b"
+          "match": "\\b(if|else|loop|while|break|heap|switch|case|match[ ]+type|match|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|box|operator)\\b"
         }
       ]
     },
@@ -389,7 +389,7 @@
           }
         },
         {
-          "match": "(union)[ ]+([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(('<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?[ ]*",
+          "match": "(mix)[ ]+([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(('<)([ ]*(([a-zA-Z_][a-zA-Z0-9_]*)[ ]*[,]?[ ]*)*)(>))?[ ]*",
           "patterns": [{ "include": "#typeIdentifier" }],
           "captures": {
             "1": { "name": "keyword.control.qat" },
@@ -440,7 +440,7 @@
           }
         },
         {
-          "match": "(::)([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(\\(((var[ ]*)?([a-zA-Z_][a-zA-Z0-9_]*))\\))?",
+          "match": "(::)[ ]*([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(\\(((var[ ]+)?([a-zA-Z_][a-zA-Z0-9_]*))\\))?",
           "captures": {
             "2": {
               "name": "entity.name.type.qat"
