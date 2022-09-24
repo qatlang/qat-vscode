@@ -434,6 +434,9 @@
             "1": {
               "name": "entity.name.type.qat"
             },
+            "2": {
+              "name": "keyword.control.less.qat"
+            },
             "3": {
               "name": "entity.name.type.qat"
             }
@@ -442,6 +445,9 @@
         {
           "match": "(::)[ ]*([a-zA-Z_][a-zA-Z0-9_]*)[ ]*(\\(((var[ ]+)?([a-zA-Z_][a-zA-Z0-9_]*))\\))?",
           "captures": {
+            "1": {
+              "name": "keyword.control.less.qat"
+            },
             "2": {
               "name": "entity.name.type.qat"
             },
