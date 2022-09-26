@@ -27,7 +27,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|break|heap|switch|case|match[ ]+type|match|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|box|operator)\\b"
+          "match": "\\b(if|else|loop|while|break|heap|switch|case|match|type|default|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|box|operator)\\b"
         }
       ]
     },

@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.10]
+
+- Added `default` keyword. Removed highlighting for `match type`.
+
 ## [0.3.9]
 
 - Updated highlighting so that the mix separator is higlighted as a inert color
