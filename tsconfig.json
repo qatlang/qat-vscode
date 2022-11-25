@@ -1,5 +1,4 @@
 {
-  // Try to keep synced with Flutter extension!
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",

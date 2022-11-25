@@ -27,7 +27,7 @@
       "patterns": [
         {
           "name": "keyword.control.qat",
-          "match": "\\b(if|else|loop|while|break|heap|switch|alias|match|type|default|continue|over|let|multithread|collect|give|from|variadic|end|say|var|lib|bring|copy|move|box|operator)\\b"
+          "match": "\\b(if|else|loop|while|break|heap|switch|match|meta|type|default|continue|over|new|give|from|variadic|end|say|var|lib|bring|copy|move|box|operator|async|await)\\b"
         }
       ]
     },
@@ -274,7 +274,7 @@
     "primitiveTypes": {
       "patterns": [
         {
-          "match": "\\b(((i|u){1}[1-9][0-9]*)|f32|f64|f80|f128|f128ppc|fbrain|fhalf|void|str|cstring|@)\\b",
+          "match": "\\b(((i|u){1}[1-9][0-9]*)|f32|f64|f80|f128|f128ppc|fbrain|fhalf|void|str|cstring|future|maybe|@)\\b",
           "captures": { "1": { "name": "storage.type.primitive.qat" } }
         }
       ]

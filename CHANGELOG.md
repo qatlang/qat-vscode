@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.3.12]
+
+- Removed some unused keywords
+- Updated logo for the extension
+
 ## [0.3.10]
 
 - Added `default` keyword. Removed highlighting for `match type`.
